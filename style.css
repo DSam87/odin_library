@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #3f4247;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+
+.app-container {
+  width: clamp(900px, 70%, 1100px);
+  height: 80%;
+  border-radius: 10px;
+  background-color: #808080;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.918);
+}
+
+.top-app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: clamp(500px, 70%, 1100px);
+  flex: 0 1 400px;
+  height: 80%;
+}
+
+.right-top-container {
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.top-app-container button {
+  width: 80%;
+  padding: 20px 0px;
+}
+
+.app-container {
+  overflow: auto;
+  padding: 50px;
+}
+
+.mid-app {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 300px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: #414141;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  background: url(./imgs/60309_1_ftc.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.918);
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-btns {
+  background-color: #38383800;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.card-btns:hover {
+  background-color: #3838386c;
+}
+
+.card-btns button {
+  width: 75px;
+  height: 25px;
+  display: block;
+}
+
+.card-btns button:hover {
+  width: 75px;
+  height: 25px;
+}
+
+.card-btns p {
+  font-size: 40px;
+  color: white;
+  line-height: 100px;
+  font-weight: bold;
+}
+
+.back-overlay {
+  position: absolute;
+  background-color: #00000077;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-new-book {
+  color: white;
+  background-color: #fff;
+  z-index: 1000;
+  width: 700px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.create-new-book .input-item label {
+  color: black;
+  font-size: 24px;
+}
+
+.input-item {
+  margin-bottom: 10px;
+}
+
+.create-new-book form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.create-new-book form label {
+  display: block;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.create-new-book form input:focus {
+  border: none;
+}
+.create-new-book form input {
+  padding: 7px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: rgba(0, 0, 0, 0.432) 0px solid;
+  background-color: #0000000e;
+  padding-left: 15px;
+}
+
+.create-new-book-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 0 1 150px;
+}
+.create-new-book-divider {
+  width: 1px;
+  height: 350px;
+  background-color: #80808094;
+}
+
+.create-new-book-buttons button {
+  width: 220px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+button {
+  border: none;
+  font-weight: bold;
+}
+
+.red-btn {
+  background-color: #a50104;
+  color: white;
+}
+
+.create {
+  background-color: #3a445d;
+  color: white;
+}
+
+button {
+  cursor: pointer;
+}
+
+.create-new-book form input[type="file"] {
+  background-color: rgba(0, 0, 255, 0);
+  padding-left: 5px;
+}
