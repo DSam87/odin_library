@@ -11,6 +11,19 @@ const myLibrary = [
     bookTitle: "Hobbit",
     bookAuthor: "Tolk",
     bookPageNumber: 212,
+    bookUrl:
+      "https://g.christianbook.com/g/slideshow/6/60309/main/60309_1_ftc.jpg",
+  },
+  {
+    bookTitle: "Hobbit",
+    bookAuthor: "Tolk",
+    bookPageNumber: 212,
+    bookUrl: "C:\\fakepath\\60309_1_ftc.jpg",
+  },
+  {
+    bookTitle: "Hobbit",
+    bookAuthor: "Tolk",
+    bookPageNumber: 212,
     bookUrl: "C:\\fakepath\\60309_1_ftc.jpg",
   },
   {
@@ -58,13 +71,32 @@ function toggleHide(e) {
 }
 
 function cardToggleHide(e) {
-  e.stopPropagation();
+  if (e.target.nodeName === "BUTTON" || e.target.nodeName === "P") {
+    e.target.parentElement.classList.remove("hide");
+  }
+
+  if (
+    (e.target.nodeName === "BUTTON" ||
+      (e.target.nodeName === "P" && e.target.classList[0] === "card-btns")) &&
+    e.type === "mouseout"
+  ) {
+    e.target.parentElement.classList.add("hide");
+  }
+
   if (e.target.classList[0] === "card" && e.type === "mouseover") {
-    e.target.firstElementChild.classList.toggle("hide");
+    e.target.firstElementChild.classList.remove("hide");
+  }
+
+  if (e.target.classList[0] === "card" && e.type === "mouseout") {
+    e.target.firstElementChild.classList.remove("hide");
+  }
+
+  if (e.target.classList[0] === "card-btns" && e.type === "mouseover") {
+    e.target.classList.remove("hide");
   }
 
   if (e.target.classList[0] === "card-btns" && e.type === "mouseout") {
-    e.target.classList.toggle("hide");
+    e.target.classList.add("hide");
   }
 }
 
@@ -84,13 +116,21 @@ createBookFormBtn.addEventListener("submit", (e) => {
   );
 
   addBookToLibrary(bookObject);
-  console.log(myLibrary);
+  updateLibList();
 });
+
+function removeBookFromList(index) {
+  myLibrary.splice(index, 1);
+  updateLibList();
+}
 
 function createCardElement(cardObject, currentIndex) {
   const cardContainer = document.createElement("div");
   cardContainer.className = "card";
-  cardContainer.setAttribute("background", cardObject.bookUrl);
+  cardContainer.setAttribute(
+    "style",
+    `background-image: url(${cardObject.bookUrl})`
+  );
   cardContainer.setAttribute("book-index", currentIndex);
 
   const cardBtnContainer = document.createElement("div");
@@ -111,14 +151,26 @@ function createCardElement(cardObject, currentIndex) {
 
   cardContainer.addEventListener("mouseover", cardToggleHide);
   cardContainer.addEventListener("mouseout", cardToggleHide);
-
+  infoBtn.addEventListener("click", () => console.log("Info"));
+  deleteBtn.addEventListener("click", (e) => {
+    let bookIndex =
+      e.target.parentElement.parentElement.getAttribute("book-index");
+    removeBookFromList(bookIndex);
+  });
   cardContainer.appendChild(cardBtnContainer);
 
   return cardContainer;
 }
 
-// Update Lib List
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
 function updateLibList() {
+  removeAllChildNodes(midApp);
+
   myLibrary.forEach((cardObject, index) => {
     midApp.appendChild(createCardElement(cardObject, index));
   });

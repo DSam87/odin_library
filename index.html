@@ -21,9 +21,22 @@
           <h1>Book Collection</h1>
         </div>
 
+        <p>
+          Your book collection! Your wishlist, collection, favorate books
+          whatever you want! <br /><br />
+          Create a collection of books with the "Add Book" button! Make sure you
+          add a book cover! Just find an image of the book online, right click
+          on the image and select "copy image adress" and past it in the book
+          url input. <br /><br />
+          To manage your book collection, hover over your books to access your
+          options on each book.<br /><br />
+          "Info" will send you to the amazon page for your book or select
+          "Delete" to remove the selected book from your collection.
+        </p>
+
         <div class="right-top-container">
           <button class="add-book-btn">Add Book</button>
-          <button>Login</button>
+          <button class="login-btn">Login</button>
         </div>
       </div>
       <div class="back-overlay hide">
@@ -43,13 +56,7 @@
             </div>
             <div class="input-item">
               <label for="book-cover">Book Cover Url</label>
-              <input
-                type="file"
-                name="book-cover"
-                id="book-cover"
-                accept="image/png, image/jpeg"
-                required
-              />
+              <input type="text" name="book-cover" id="book-cover" required />
             </div>
           </form>
           <div class="create-new-book-divider"></div>
@@ -64,9 +71,6 @@
 
       <div class="app-container">
         <div class="mid-app"></div>
-      </div>
-      <div class="bottom-container">
-        <p>Copyright © 2023 Salvador Caballero</p>
       </div>
     </div>
   </body>

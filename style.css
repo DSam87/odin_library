@@ -8,20 +8,21 @@
 .main-container {
   width: 100vw;
   height: 100vh;
-  background-color: #3f4247;
+  background-color: #f6f6f2;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   position: relative;
+  gap: 18px;
 }
 
 .app-container {
   width: clamp(900px, 70%, 1100px);
   height: 80%;
   border-radius: 10px;
-  background-color: #808080;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.918);
+  background-color: #c2edce;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.075);
 }
 
 .top-app-container {
@@ -29,9 +30,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: clamp(500px, 70%, 1100px);
+  width: clamp(100px, 70%, 1100px);
   flex: 0 1 400px;
   height: 80%;
+  /* background-color: #c2edce; */
+  border-radius: 10px;
 }
 
 .right-top-container {
@@ -70,7 +73,7 @@
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   position: relative;
-  background: url(./imgs/60309_1_ftc.jpg);
+  /* background: url(./imgs/60309_1_ftc.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -170,7 +173,7 @@
   font-size: 20px;
   border-radius: 20px;
   border: rgba(0, 0, 0, 0.432) 0px solid;
-  background-color: #0000000e;
+  background-color: #badfe757;
   padding-left: 15px;
 }
 
@@ -183,13 +186,14 @@
 .create-new-book-divider {
   width: 1px;
   height: 350px;
-  background-color: #80808094;
+  background-color: #388087;
 }
 
 .create-new-book-buttons button {
   width: 220px;
   height: 50px;
   border-radius: 30px;
+  color: white;
 }
 
 .hide {
@@ -202,13 +206,12 @@ button {
 }
 
 .red-btn {
-  background-color: #a50104;
+  background-color: #3880876c;
   color: white;
 }
 
 .create {
-  background-color: #3a445d;
-  color: white;
+  background-color: #c2edce;
 }
 
 button {
@@ -218,4 +221,14 @@ button {
 .create-new-book form input[type="file"] {
   background-color: rgba(0, 0, 255, 0);
   padding-left: 5px;
+}
+
+.add-book-btn {
+  background-color: #c2edce;
+  border-radius: 150px;
+}
+
+.login-btn {
+  background-color: #3880876c;
+  border-radius: 150px;
 }
