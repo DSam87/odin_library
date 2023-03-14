@@ -2,35 +2,20 @@ const createBookFormBtn = document.querySelector("#create-book-form");
 const addBookBtn = document.querySelector(".add-book-btn");
 const createBookPopupElement = document.querySelector(".back-overlay");
 const backOverlay = document.querySelector(".back-overlay");
-const cardBtns = document.querySelector(".card-btns");
-const card = document.querySelector(".card");
 const midApp = document.querySelector(".mid-app");
+const githubBtn = document.querySelector(".github-btn");
 
-const myLibrary = [
+githubBtn.addEventListener("click", () => {
+  window.open("https://github.com/DSam87/odin_library");
+});
+
+let myLibrary = [
   {
     bookTitle: "Hobbit",
-    bookAuthor: "Tolk",
-    bookPageNumber: 212,
+    bookAuthor: "J. R. R. Tolkien",
+    bookPageNumber: 304,
     bookUrl:
       "https://g.christianbook.com/g/slideshow/6/60309/main/60309_1_ftc.jpg",
-  },
-  {
-    bookTitle: "Hobbit",
-    bookAuthor: "Tolk",
-    bookPageNumber: 212,
-    bookUrl: "C:\\fakepath\\60309_1_ftc.jpg",
-  },
-  {
-    bookTitle: "Hobbit",
-    bookAuthor: "Tolk",
-    bookPageNumber: 212,
-    bookUrl: "C:\\fakepath\\60309_1_ftc.jpg",
-  },
-  {
-    bookTitle: "Hobbit",
-    bookAuthor: "Tolk",
-    bookPageNumber: 212,
-    bookUrl: "C:\\fakepath\\60309_1_ftc.jpg",
   },
 ];
 
@@ -38,16 +23,7 @@ function Book(name, year, page, hasRead) {
   this.name = name;
   this.year = year;
   this.page = page;
-  this.hasRead = hasRead;
 }
-
-Book.prototype.getName = function () {
-  return this.name;
-};
-
-Book.prototype.getYear = function () {
-  return this.year;
-};
 
 function addBookToLibrary(bookObject) {
   myLibrary.push(bookObject);
@@ -119,9 +95,26 @@ createBookFormBtn.addEventListener("submit", (e) => {
   updateLibList();
 });
 
+function bookInfo(index) {
+  let bookObject = myLibrary[index];
+  let bookTitle = bookObject.bookTitle;
+  console.log(bookTitle);
+  window.open(`https://www.amazon.com/s?k=${bookTitle}+book`);
+}
+
 function removeBookFromList(index) {
   myLibrary.splice(index, 1);
   updateLibList();
+}
+
+function saveBookObjects() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
+function getBookObject() {
+  let jsonLib = localStorage.getItem("myLibrary");
+  myLibrary = JSON.parse(jsonLib);
+  console.log(myLibrary);
 }
 
 function createCardElement(cardObject, currentIndex) {
@@ -151,7 +144,11 @@ function createCardElement(cardObject, currentIndex) {
 
   cardContainer.addEventListener("mouseover", cardToggleHide);
   cardContainer.addEventListener("mouseout", cardToggleHide);
-  infoBtn.addEventListener("click", () => console.log("Info"));
+  infoBtn.addEventListener("click", (e) => {
+    let bookIndex =
+      e.target.parentElement.parentElement.getAttribute("book-index");
+    bookInfo(bookIndex);
+  });
   deleteBtn.addEventListener("click", (e) => {
     let bookIndex =
       e.target.parentElement.parentElement.getAttribute("book-index");
@@ -174,9 +171,12 @@ function updateLibList() {
   myLibrary.forEach((cardObject, index) => {
     midApp.appendChild(createCardElement(cardObject, index));
   });
+
+  saveBookObjects();
 }
 
 addBookBtn.addEventListener("click", toggleHide);
 backOverlay.addEventListener("click", toggleHide);
 
+getBookObject();
 updateLibList();
