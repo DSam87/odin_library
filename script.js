@@ -113,7 +113,11 @@ function saveBookObjects() {
 
 function getBookObject() {
   let jsonLib = localStorage.getItem("myLibrary");
-  myLibrary = JSON.parse(jsonLib);
+  if (!jsonLib) {
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  } else {
+    myLibrary = JSON.parse(jsonLib);
+  }
   console.log(myLibrary);
 }
 
